@@ -45,8 +45,6 @@ export class UsersController {
     return this.usersService.update(id, data);
   }
 
-
-
   @Delete('/:id')
   removeById(@Param('id') id: string) {
     return this.usersService.removeById(id);
