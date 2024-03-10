@@ -1,26 +1,27 @@
-import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query, Session } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
 @Serialize(UserDto)
 export class UsersController {
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private authService: AuthService,
   ) { }
 
-  @Post('signup')
-  public async createUser(
-    @Body() data: CreateUserDto
-  ) {
-    try {
-      return await this.usersService.create(data.email, data.password);
-    } catch (error) {
-      throw new BadRequestException('Something went wrong');
-    }
+  @Post('/signup')
+  createUser(@Body() data: CreateUserDto) {
+    return this.authService.signup(data.email, data.password);
+  }
+
+  @Post('/signin')
+  signin(@Body() data: CreateUserDto) {
+    return this.authService.signin(data.email, data.password);
   }
 
   @Get('/:id')
