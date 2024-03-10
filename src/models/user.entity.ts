@@ -6,18 +6,10 @@ export class User {
   id: string;
 
   @Column({ type: 'varchar', length: 300 })
-  // @IsEmail()
   email: string;
-
-  // first name required
-  // @Column({ type: 'varchar', length: 300 })
-  // name: string;
 
   @Column()
   password: string;
-
-  // @Column()
-  // gender: string;
 
   @AfterInsert()
   logInsert() {
