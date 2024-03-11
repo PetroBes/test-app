@@ -12,8 +12,6 @@ export class UsersService {
   create(email: string, password: string) {
     try {
       const user = this.repo.create({ email, password });
-      console.log('user', user)
-
       return this.repo.save(user);
     } catch (error) {
       throw new NotFoundException(error.message);
@@ -21,7 +19,7 @@ export class UsersService {
   }
 
   findById(id: string) {
-    return this.repo.findOneBy({ id });
+    return id ? this.repo.findOneBy({ id }) : null;
   }
 
   find(email: string) {
