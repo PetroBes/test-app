@@ -13,6 +13,9 @@ import { CurrentUserInterceptor } from './interceptors/current-user.interceptor'
   providers: [
     UsersService,
     AuthService,
+    // delete APP_INTERCEPTOR if some controller
+    // in the future doesn't need current user in the request
+    // to prevent unnecessary call to the db
     {
       provide: APP_INTERCEPTOR,
       useClass: CurrentUserInterceptor,
