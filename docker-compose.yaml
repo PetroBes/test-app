@@ -32,11 +32,12 @@ services:
     container_name: server-app
     ports:
       - 3000:3000
-      - 9229:9229
     depends_on:
       - postgres
     environment:
       DATABASE_URL: postgres://auth-test:test@postgres/auth-db
+    env_file:
+      - ./.env
 
 volumes:
   postgres_data:
