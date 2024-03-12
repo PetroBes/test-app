@@ -25,7 +25,7 @@ services:
 
   server:
     build: .
-    command: npm run start:debug
+    command: npm run start
     volumes:
       - .:/app
     restart: always
