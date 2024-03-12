@@ -10,7 +10,7 @@ export class AuthService {
   constructor(
     private configService: ConfigService,
     private jwtService: JwtService,
-  ) { }
+  ) {}
 
   async login(user: User, response: Response) {
     const tokenPayload: TokenPayload = {
@@ -19,7 +19,7 @@ export class AuthService {
 
     const expires = new Date();
     expires.setSeconds(
-      expires.getSeconds() + this.configService.get('JWT_EXPIRATION')
+      expires.getSeconds() + this.configService.get('JWT_EXPIRATION'),
     );
 
     const token = this.jwtService.sign(tokenPayload);
