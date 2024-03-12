@@ -9,10 +9,6 @@ export const databaseConfig = () => ({
     entities: ['**/*.entity.ts'],
     migrations: ['migrations/**/*.ts'],
     migrationsRun: process.env.TYPEORM_MIGRATIONS_RUN === 'true',
-    synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true',
-    cli: {
-      entitiesDir: 'src',
-      migrationsDir: 'migrations',
-    },
-  }
+    synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true'
+  },
 });

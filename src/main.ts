@@ -1,14 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { AppModule } from './app.module';
+import * as cookieParser from 'cookie-parser';
+import { AppModule } from './app/app.module';
 import { ConfigService } from '@nestjs/config';
-const cookieSession = require('cookie-session');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(cookieSession({
-    keys: ['asd'],
-  }));
+  app.use(cookieParser());
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

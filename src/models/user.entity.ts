@@ -1,3 +1,4 @@
+import { IsEmail } from 'class-validator';
 import { AfterInsert, AfterRemove, AfterUpdate, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
@@ -5,6 +6,7 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @IsEmail()
   @Column({ type: 'varchar', length: 300 })
   email: string;
 
