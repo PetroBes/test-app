@@ -2,6 +2,7 @@
 /dist
 /node_modules
 /build
+package-lock.json
 
 # Logs
 logs
@@ -30,10 +31,10 @@ lerna-debug.log*
 
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
 
 # dotenv environment variable files
 .env
