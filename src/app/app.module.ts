@@ -20,4 +20,4 @@ import { AuthModule } from '../auth/auth.module';
     UsersModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}

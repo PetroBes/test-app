@@ -10,7 +10,7 @@ import { UserDto } from 'src/users/dtos/user.dto';
 @Controller('auth')
 @Serialize(UserDto)
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Get('/whoami')
   @UseGuards(LocalAuthGuard)
@@ -22,7 +22,7 @@ export class AuthController {
   @Post('/login')
   async login(
     @CurrentUser() user: User,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     await this.authService.login(user, response);
     return user;
