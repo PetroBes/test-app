@@ -1,4 +1,15 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  NotFoundException,
+  Param,
+  Patch,
+  Post,
+  Query,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
 import { UsersService } from './users.service';
@@ -11,9 +22,7 @@ import { User } from '../models/user.entity';
 @Controller('users')
 @Serialize(UserDto)
 export class UsersController {
-  constructor(
-    private usersService: UsersService,
-  ) { }
+  constructor(private usersService: UsersService) {}
 
   @Post()
   async createUser(@Body() data: CreateUserDto) {
@@ -41,10 +50,7 @@ export class UsersController {
   }
 
   @Patch('/:id')
-  update(
-    @Param('id') id: string,
-    @Body() data: UpdateUserDto
-  ) {
+  update(@Param('id') id: string, @Body() data: UpdateUserDto) {
     return this.usersService.update(id, data);
   }
 

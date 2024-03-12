@@ -31,6 +31,14 @@ $ npm run typeorm migration:run
 $ npm run typeorm migration:revert
 ```
 
+## Use format prettier to stick the project convention rules
+
+Before the commiting changes use:
+
+```bash
+$ npm run format
+```
+
 ## Backend .env file
 
 ### example of all variables with default values

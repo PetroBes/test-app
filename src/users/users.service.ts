@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException, UnauthorizedException, UnprocessableEntityException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -8,9 +13,7 @@ import { GetUserDto } from './dtos/get-user.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectRepository(User) private repo: Repository<User>
-  ) { }
+  constructor(@InjectRepository(User) private repo: Repository<User>) {}
 
   private async validateCreateUserDto(createUserDto: CreateUserDto) {
     const user = await this.repo.findOneBy({ email: createUserDto.email });
@@ -32,7 +35,7 @@ export class UsersService {
   async verifyUser(email: string, password: string) {
     const user = await this.repo.findOneBy({ email });
     if (!user) {
-      throw new UnauthorizedException('Email doesn\'t exist');
+      throw new UnauthorizedException('Email does not exist');
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {

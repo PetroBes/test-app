@@ -16,11 +16,11 @@ import { AuthController } from './auth.controller';
         secret: configService.get('JWT_SECRET'),
         signOptions: {
           expiresIn: `${configService.get('JWT_EXPIRATION')}s`,
-        }
+        },
       }),
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy]
+  providers: [AuthService, LocalStrategy],
 })
-export class AuthModule { }
+export class AuthModule {}
