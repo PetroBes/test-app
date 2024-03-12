@@ -4,8 +4,11 @@ import { User } from '../models/user.entity';
 import { AuthService } from './auth.service';
 import { CurrentUser } from 'src/users/decorators/current-user.decorator';
 import { LocalAuthGuard } from 'src/guards/local-auth.guard';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
+import { UserDto } from 'src/users/dtos/user.dto';
 
 @Controller('auth')
+@Serialize(UserDto)
 export class AuthController {
   constructor(private readonly authService: AuthService) { }
 
@@ -22,6 +25,6 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response
   ) {
     await this.authService.login(user, response);
-    response.send(user);
+    return user;
   }
 }
