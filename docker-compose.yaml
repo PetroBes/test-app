@@ -31,7 +31,7 @@ services:
     restart: always
     container_name: server-app
     ports:
-      - 3000:3000
+      - 3033:3000
     depends_on:
       - postgres
     environment:
